@@ -6,12 +6,13 @@
 class Sigmoid : public Activation
 {
 public:
-    double activate(double x);
+    ~Sigmoid();
 
-    double derivative(double x);
+    double activate(double x) const;
+
+    double derivative(double x) const;
 
 private:
-    const double e = 2.718;
 };
 
 #endif // SIGMOID_H

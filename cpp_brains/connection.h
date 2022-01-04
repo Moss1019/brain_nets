@@ -2,20 +2,22 @@
 #define CONNECTION_H
 
 #include "globals.h"
-#include "neuron.h"
+//#include "neuron.h"
+
+class Neuron;
 
 class Connection
 {
 public:
     Connection(Neuron *inputNeuron);
 
-    const Neuron *getNeuron() const;
+    double activate() const;
 
     double getWeight() const;
 
-    double activate() const;
+    void adjustWeight(double adjustment);
 
-    void adjustWeight(double delta);
+    const Neuron &getNeuron() const;
 
 private:
     double m_weight;

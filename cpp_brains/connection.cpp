@@ -1,23 +1,17 @@
 #include "connection.h"
+#include "neuron.h"
 
 #include <cstdlib>
 
-#ifdef DEBUG
-#include <iostream>
-#endif
-
 Connection::Connection(Neuron *inputNeuron)
-    : m_inputNeuron{inputNeuron}
+    :m_inputNeuron{inputNeuron}
 {
-    m_weight = std::rand() / RAND_MAX;
-#ifdef DEBUG
-    std::cout << "Connection " << m_weight << std::endl;
-#endif
+    m_weight = 1.0 * std::rand() / RAND_MAX;
 }
 
-const Neuron *Connection::getNeuron() const
+double Connection::activate() const
 {
-    return m_inputNeuron;
+    return m_inputNeuron->activate() * m_weight;
 }
 
 double Connection::getWeight() const
@@ -25,12 +19,12 @@ double Connection::getWeight() const
     return m_weight;
 }
 
-double Connection::activate() const
+void Connection::adjustWeight(double adjustment)
 {
-    return m_weight * m_inputNeuron->activate();
+    m_weight += adjustment;
 }
 
-void Connection::adjustWeight(double delta)
+const Neuron &Connection::getNeuron() const
 {
-    m_weight += delta;
+    return *m_inputNeuron;
 }

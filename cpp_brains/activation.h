@@ -6,9 +6,11 @@
 class Activation
 {
 public:
-    virtual double activate(double x) = 0;
+    virtual ~Activation() = 0;
 
-    virtual double derivative(double x) = 0;
+    virtual double activate(double x) const = 0;
+
+    virtual double derivative(double x) const = 0;
 };
 
 #endif // ACTIVATION_H

@@ -7,9 +7,11 @@
 class Identity : public Activation
 {
 public:
-    double activate(double x);
+    ~Identity();
 
-    double derivative(double x);
+    double activate(double x) const;
+
+    double derivative(double x) const;
 };
 
 #endif // IDENTITY_H

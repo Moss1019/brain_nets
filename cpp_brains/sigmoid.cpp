@@ -2,13 +2,18 @@
 
 #include <cmath>
 
-double Sigmoid::activate(double x)
+Sigmoid::~Sigmoid()
 {
-    return 1.0 / (1 + std::pow(e, -x));
+
 }
 
-double Sigmoid::derivative(double x)
+double Sigmoid::activate(double x) const
 {
-    double activated = activate(x);
-    return activated * (1 - activated);
+    return 1.0 / (1 + std::exp(-x));
+}
+
+double Sigmoid::derivative(double x) const
+{
+    double a = activate(x);
+    return a * (1 - a);
 }

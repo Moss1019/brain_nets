@@ -1,7 +1,7 @@
 #include "inputneuron.h"
 
 InputNeuron::InputNeuron(int layerIndex, int index)
-    :Neuron(layerIndex, index)
+    :Neuron{layerIndex, index}
 {
 
 }

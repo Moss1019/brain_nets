@@ -9,9 +9,13 @@ class Neuron
 public:
     Neuron(int layerIndex, int index);
 
+    virtual double activate() = 0;
+
     double getValue() const;
 
-    virtual double activate() = 0;
+    int getLayerIndex() const;
+
+    int getIndex() const;
 
 protected:
     int m_layerIndex;
