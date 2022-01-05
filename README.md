@@ -11,7 +11,6 @@ I am currently learning about neural networks and machine learning in general. T
 - Java
 - Kotlin
 - C++
-- C
 
 # How a feed forward back propagating network works
 ## Structure
