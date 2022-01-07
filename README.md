@@ -56,3 +56,6 @@ For hidden layer neurons the calculation is: f'(net input) * (sum of all the del
 After the deltas have been calculated, the weights of the connections can be updated. This is done be adjusting the weight by an amount, not completely replacing the value.
 The connection being updated is the connection between a neuron and its connections in the <strong>previous</strong> layer.
 deltaW<sub>ij</sub> = eta * delta<sub>i</sub> * activation<sub>j</sub>
+
+# Additional
+learn about implementing a neural network in Python here: <a href="https://www.youtube.com/playlist?list=PL6ePeWFUyi5jQc4dSMcec0sBoIgdq6hzA">neural net in Python</a>
