@@ -1,5 +1,4 @@
-#ifndef HIDDENNEURON_H
-#define HIDDENNEURON_H
+#pragma once
 
 #include <vector>
 
@@ -12,5 +11,3 @@ public:
 
     void calculateDelta(const std::vector<WorkingNeuron *> &nextLayer);
 };
-
-#endif // HIDDENNEURON_H

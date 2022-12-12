@@ -1,10 +1,5 @@
 #include "identity.h"
 
-Identity::~Identity()
-{
-
-}
-
 double Identity::activate(double x) const
 {
     return x;

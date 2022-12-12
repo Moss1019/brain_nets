@@ -1,5 +1,4 @@
-#ifndef WORKINGNEURON_H
-#define WORKINGNEURON_H
+#pragma once
 
 #include <vector>
 
@@ -9,10 +8,27 @@
 
 class WorkingNeuron : public Neuron
 {
+protected:
+    constexpr static double eta{1.0};
+
+    double m_netInput{0.0};
+
+    double m_delta{0.0};
+
+    Activation *m_activation{nullptr};
+
+    std::vector<Connection *> m_connections;
+
 public:
     WorkingNeuron(int layerIndex, int index, Activation *activation);
 
+    WorkingNeuron(const WorkingNeuron &other) = delete;
+
+    WorkingNeuron operator=(const WorkingNeuron &other) = delete;
+
     ~WorkingNeuron();
+
+    const std::vector<Connection *> &connections() const;
 
     const Connection &getConnection(int index) const;
 
@@ -23,17 +39,4 @@ public:
     void applyDelta();
 
     void addConnection(Neuron *neuron);
-
-protected:
-    constexpr static double eta = 1.0;
-
-    double m_netInput;
-
-    double m_delta;
-
-    Activation *m_activation;
-
-    std::vector<Connection *> m_connections;
 };
-
-#endif // WORKINGNEURON_H

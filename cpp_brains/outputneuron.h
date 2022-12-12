@@ -1,5 +1,4 @@
-#ifndef OUTPUTNEURON_H
-#define OUTPUTNEURON_H
+#pragma once
 
 #include "workingneuron.h"
 
@@ -11,4 +10,3 @@ public:
     void calculateDelta(double expected);
 };
 
-#endif // OUTPUTNEURON_H

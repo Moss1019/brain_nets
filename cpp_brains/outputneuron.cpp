@@ -3,9 +3,6 @@
 #ifdef TRAINING_DEBUG
 #include <iostream>
 #endif
-#ifdef DEBUG
-#include <iostream>
-#endif
 
 OutputNeuron::OutputNeuron(int layerIndex, int index, Activation *activation)
     :WorkingNeuron(layerIndex, index, activation)

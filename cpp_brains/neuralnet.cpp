@@ -5,6 +5,11 @@
 #include <iostream>
 #endif
 
+NeuralNet::NeuralNet()
+{
+    
+}
+
 NeuralNet::NeuralNet(const std::vector<int> &topology)
 {
     m_numInputs = topology[0];
@@ -51,18 +56,17 @@ NeuralNet::~NeuralNet()
     }
 }
 
-void NeuralNet::train(const std::vector<double *> &inputs, const std::vector<double *> expected, int iterations)
+void NeuralNet::train(const std::vector<std::vector<double>> &inputs, const std::vector<std::vector<double>> expected, int iterations)
 {
     for(int i = 0; i < iterations; ++i)
     {
         for(int j = 0; j < inputs.size(); ++j)
         {
-            double *ins = inputs[j];
-            double *exd = expected[j];
-            predict(ins);
+            std::vector<double> predicted;
+            predict(inputs[j], predicted);
             for(int k = 0; k < m_output.size(); ++k)
             {
-                static_cast<OutputNeuron *>(m_output[k])->calculateDelta(exd[k]);
+                static_cast<OutputNeuron *>(m_output[k])->calculateDelta(expected[j][k]);
             }
             for(int l = m_hidden.size() - 1; l >= 0; --l)
             {
@@ -86,13 +90,13 @@ void NeuralNet::train(const std::vector<double *> &inputs, const std::vector<dou
     }
 }
 
-const std::vector<double> NeuralNet::predict(double *input)
+const void NeuralNet::predict(const std::vector<double> &input, std::vector<double> &output)
 {
     for(int i = 0; i < m_input.size(); ++i)
     {
         m_input[i]->setValue(input[i]);
     }
-    std::vector<double> output;
+    output.clear();
 #ifdef DEBUG
     std::cout << "Predicting for ";
     for(int i = 0; i < m_input.size(); ++i)
@@ -109,7 +113,6 @@ const std::vector<double> NeuralNet::predict(double *input)
         std::cout << o->getValue() << std::endl;
 #endif
     }
-    return output;
 }
 
 void NeuralNet::setup()

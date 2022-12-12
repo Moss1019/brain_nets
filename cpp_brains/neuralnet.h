@@ -1,5 +1,4 @@
-#ifndef NEURALNET_H
-#define NEURALNET_H
+#pragma once
 
 #include <vector>
 
@@ -12,23 +11,14 @@
 
 class NeuralNet
 {
-public:
-    NeuralNet(const std::vector<int> &topology);
-
-    ~NeuralNet();
-
-    void train(const std::vector<double *> &inputs, const std::vector<double *> expected, int iterations);
-
-    const std::vector<double> predict(double *input);
-
 private:
-    int m_numInputs;
+    int m_numInputs{0};
 
-    int m_numHiddenLayers;
+    int m_numHiddenLayers{0};
 
-    int m_numOutputs;
+    int m_numOutputs{0};
 
-    Activation *m_sigmoid;
+    Activation *m_sigmoid{nullptr};
 
     std::vector<int> m_hiddenCounts;
 
@@ -43,6 +33,19 @@ private:
     std::vector<BiasNeuron *> m_bias;
 
     void setup();
-};
 
-#endif // NEURALNET_H
+public:
+    NeuralNet();
+
+    NeuralNet(const std::vector<int> &topology);
+
+    NeuralNet(const NeuralNet &other) = delete;
+
+    NeuralNet operator=(const NeuralNet &other) = delete;
+
+    ~NeuralNet();
+
+    void train(const std::vector<std::vector<double>> &inputs, const std::vector<std::vector<double>> expected, int iterations);
+
+    const void predict(const std::vector<double> &input, std::vector<double> &output);
+};

@@ -1,11 +1,17 @@
-#ifndef NEURON_H
-#define NEURON_H
+#pragma once
 
 #include "globals.h"
 #include "connection.h"
 
 class Neuron
 {
+protected:
+    int m_layerIndex{0};
+
+    int m_index{0};
+
+    double m_value{0.0};
+
 public:
     Neuron(int layerIndex, int index);
 
@@ -16,13 +22,4 @@ public:
     int getLayerIndex() const;
 
     int getIndex() const;
-
-protected:
-    int m_layerIndex;
-
-    int m_index;
-
-    double m_value;
 };
-
-#endif // NEURON_H

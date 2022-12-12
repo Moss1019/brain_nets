@@ -1,5 +1,4 @@
-#ifndef BIASNEURON_H
-#define BIASNEURON_H
+#pragma once
 
 #include "neuron.h"
 
@@ -10,5 +9,3 @@ public:
 
     double activate();
 };
-
-#endif // BIASNEURON_H

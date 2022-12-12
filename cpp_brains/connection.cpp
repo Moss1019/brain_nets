@@ -14,9 +14,14 @@ double Connection::activate() const
     return m_inputNeuron->activate() * m_weight;
 }
 
-double Connection::getWeight() const
+double Connection::weight() const
 {
     return m_weight;
+}
+
+void Connection::setWeight(double weight)
+{
+    m_weight = weight;
 }
 
 void Connection::adjustWeight(double adjustment)

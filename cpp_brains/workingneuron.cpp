@@ -18,6 +18,11 @@ WorkingNeuron::~WorkingNeuron()
     }
 }
 
+const std::vector<Connection *> &WorkingNeuron::connections() const
+{
+    return m_connections;
+}
+
 const Connection &WorkingNeuron::getConnection(int index) const
 {
     return *m_connections[index];
